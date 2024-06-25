@@ -20,7 +20,7 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post("http://localhost:5000/newPost",
+      const resp = await axios.post("https://post-backend-server.onrender.com/newPost",
         {
         title,
         imageUrl,
