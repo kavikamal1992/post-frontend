@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import Navbar from './Navbar';
 
 const Home = () => {
 
@@ -25,6 +26,8 @@ const Home = () => {
     nav('/create-post')
   }
   return (
+    <>
+    <Navbar/>
     <div>
       <h1>Hello Homepage</h1>
       <button onClick={handleCreate}>Create Post</button>
@@ -35,11 +38,14 @@ const Home = () => {
               <h2>{item.title}</h2>
               <img src={item.imageUrl} height={150} width={150} alt={item.title} />
               <p>{item.desc}</p>
+              <p>Created By : {item.userOwner}</p>
+              <hr />
             </div>
           )
         })}
       </div>
     </div>
+    </>
   )
 }
 

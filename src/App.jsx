@@ -1,6 +1,5 @@
 import './App.css';
 import {BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
-import Navbar from './pages/Navbar';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -24,7 +23,6 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Navbar/>
     <Routes>
       <Route path='/' element={<PrivateRoute element={<Home/>}/>} />
       <Route path='/create-post' element={<PrivateRoute element={<CreatePost/>}/>} />

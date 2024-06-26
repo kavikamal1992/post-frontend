@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div>
       <ul>
-        <li><Link to='/'>Home</Link></li>
+        {/* <li><Link to='/'>Home</Link></li> */}
         {cookie.access_token
          ? 
         <><h3>{name} <button onClick={handleLogout}>Logout</button> </h3></> 

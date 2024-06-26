@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { getUserID, getUserName } from "./customHook";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { getUserName } from "./customHook";
 
 const CreatePost = () => {
 
-    const userID = getUserID()
+  const username = getUserName()
   const [cookie, setCookie] = useCookies(["access_token"]);
 
 
   const [title, settitle] = useState("");
   const [imageUrl, setimageUrl] = useState("");
   const [desc, setdesc] = useState("");
-  const [userOwner, setuserOwner] = useState(userID);
+  const [userOwner, setuserOwner] = useState(username);
 
   const nav = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newPost = {
+      title:title,
+      imageUrl : imageUrl,
+      desc:desc,
+      userOwner:userOwner
+    }
     try {
-      const resp = await axios.post("https://post-backend-server.onrender.com/newPost",
-        {
-        title,
-        imageUrl,
-        desc,
-        userOwner,
-        },
+      const resp = await axios.post("https://post-backend-server.onrender.com/newPost",newPost,
         {
            headers : {authorization: cookie.access_token} 
         }
